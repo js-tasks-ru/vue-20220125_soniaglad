@@ -19,14 +19,17 @@ const app = createApp({
   data() {
     return {
       meetups: null,
+      title: 'MEETUP_TITLE',
     };
   },
 
   mounted() {
     fetchMeetupById(meetupId).then((meetups) => {
-      this.meetups = meetups;
+      this.meetups = meetupId;
     });
   },
 
   watch: {},
 });
+
+const vm = app.mount('#app');

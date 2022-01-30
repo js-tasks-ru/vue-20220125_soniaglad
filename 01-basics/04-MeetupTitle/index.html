@@ -6,11 +6,18 @@
   </head>
   <body>
     <div id="app">
-      <div v-for="meetup in meetups">
-        <label><input v-model="meetup.title" type="radio" :value="meetup.id" />{{ meetup.id }}</label>
-        <hr />
+      <div>
 
-        <h3>{{ meetup.title }}</h3>
+        <template v-for="n in 5" :key="n">
+          <label>
+            <input type="radio" :value="n" v-model="title"/>
+            {{ n }}
+          </label>
+        </template>
+
+        <hr>
+
+        <h3>{{ title }}</h3>
       </div>
     </div>
 
