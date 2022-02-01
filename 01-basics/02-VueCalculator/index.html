@@ -31,18 +31,17 @@
     <div id="app" class="container">
       <div class="row">
         <div class="col">
-          <input type="number" v-model="x"/>
+          <input type="number" v-model="operands[0]" />
         </div>
 
         <div class="col" style="display: flex; flex-direction: column; font-family: emoji">
-          <label><input type="radio" v-model="culcResult" value="sum" /> ➕</label>
-          <label><input type="radio" v-model="culcResult" value="subtract" /> ➖</label>
-          <label><input type="radio" v-model="culcResult" value="multiply" /> ✖</label>
-          <label><input type="radio" v-model="culcResult" value="divide" /> ➗</label>
+          <label v-for="operation in operations">
+            <input type="radio" v-model="operator" :value="operation.operator" /> {{ operation.text }}
+          </label>
         </div>
 
         <div class="col">
-          <input type="number" v-model="y"/>
+          <input type="number" v-model="operands[1]" />
         </div>
 
         <div class="col">=</div>
