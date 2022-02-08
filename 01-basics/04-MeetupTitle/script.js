@@ -15,21 +15,22 @@ function fetchMeetupById(meetupId) {
 }
 
 // Требуется создать Vue приложение
-const app = createApp({
+
+createApp({
   data() {
     return {
-      meetups: null,
-      title: 'MEETUP_TITLE',
+      meetupId: null,
+      meetupData: null,
+      title: '',
     };
   },
 
-  mounted() {
-    fetchMeetupById(meetupId).then((meetups) => {
-      this.meetups = meetupId;
-    });
+  watch: {
+    meetupId() {
+      fetchMeetupById(this.meetupId).then((meetup) => {
+        this.meetupData = meetup;
+        this.title = this.meetupData.title;
+      });
+    },
   },
-
-  watch: {},
-});
-
-const vm = app.mount('#app');
+}).mount('#app');
