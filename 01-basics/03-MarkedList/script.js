@@ -29,25 +29,24 @@ const emails = [
 ];
 
 // Требуется создать Vue приложение
-const app = createApp({
+createApp({
   data() {
     return {
+      emails,
       search: '',
-      emails: null,
-      isMarked: false,
     };
   },
 
   computed: {
     filteredEmails() {
-      this.emails = emails;
-
-      const searchFilter = (email) => email.toLowerCase().includes(this.search.toLowerCase());
+      const searchFilter = (email) =>
+        this.search === '' ? false : email.toLowerCase().includes(this.search.toLowerCase());
 
       return this.emails.map((email) => {
-        if (searchFilter(email)) {
-          return email; // как сюда добавить класс?
-        }
+        return {
+          email: email,
+          isMarked: searchFilter(email),
+        };
       });
     },
   },
