@@ -20,16 +20,14 @@ createApp({
   data() {
     return {
       meetupId: null,
-      meetupData: null,
-      title: '',
+      meetupTitle: null,
     };
   },
 
   watch: {
     meetupId() {
       fetchMeetupById(this.meetupId).then((meetup) => {
-        this.meetupData = meetup;
-        this.title = this.meetupData.title;
+        this.meetupTitle = meetup.title;
       });
     },
   },
