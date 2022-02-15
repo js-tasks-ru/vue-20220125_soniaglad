@@ -5,7 +5,7 @@ export default defineComponent({
 
   // Компонент должен иметь входной параметр
   props: {
-    counter: {
+    count: {
       type: Number,
       default: 0,
     },
@@ -16,15 +16,15 @@ export default defineComponent({
   // Шаблон лучше держать максимально простым, а логику выносить в методы
 
   methods: {
-    inc() {
-      this.$emit('inc');
+    inc(value) {
+      this.$emit('inc', value);
     },
   },
 
   // Шаблон потребуется отредактировать
   template: `<button
                 type="button"
-                @click='inc()'>
-                {{ counter }}
+                @click='inc(count + 1)'>
+                {{ count }}
             </button>`,
 });
