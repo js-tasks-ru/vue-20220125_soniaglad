@@ -5,27 +5,26 @@ export default defineComponent({
 
   // Компонент должен иметь входной параметр
   props: {
-    count: {
+    counter: {
       type: Number,
       default: 0,
     },
 
-    emits: ['update:count'],
+    emits: ['inc'],
   },
 
   // Шаблон лучше держать максимально простым, а логику выносить в методы
 
   methods: {
-    count() {
-      return this.count + 1;
+    inc() {
+      this.$emit('inc');
     },
   },
 
   // Шаблон потребуется отредактировать
   template: `<button
                 type="button"
-                @click='$emit("update:count", $event.target.value)'
-                :count='count'>
-                {{ count }}
+                @click='inc()'>
+                {{ counter }}
             </button>`,
 });
