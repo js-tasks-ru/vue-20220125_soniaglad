@@ -10,14 +10,14 @@ export default defineComponent({
       default: 0,
     },
 
-    emits: ['inc'],
+    emits: ['update:count'],
   },
 
   // Шаблон лучше держать максимально простым, а логику выносить в методы
 
   methods: {
     inc(value) {
-      this.$emit('inc', value);
+      this.$emit('update:count', value);
     },
   },
 
