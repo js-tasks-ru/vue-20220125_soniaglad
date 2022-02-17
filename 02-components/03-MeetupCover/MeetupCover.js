@@ -15,8 +15,8 @@ export default defineComponent({
   },
 
   template: `
-    <!--  :style="{'--bg-url': url(image)}" - не рабоатет вообще -->
-    <div class="meetup-cover" :style="{'--bg-url': image}">
+     <div class="meetup-cover" :style="{'--bg-url': 'url(' + image + ')'}">
+    <!-- <div class="meetup-cover" :style="{'&#45;&#45;bg-url': \`url(\${image}\`}">-->
         <h1 class="meetup-cover__title">{{ title }}</h1>
     </div>`,
 });
